@@ -5,12 +5,12 @@
 **CellMaskNet** is a comprehensive deep learning pipeline designed for precise segmentation and classification of nuclei in pathology images. It leverages a multi-feature fusion strategy, combining:
 *   **Local Features**: Extracted via MobileViT.
 *   **Global Features**: Extracted via Swin Transformer.
+*   **Co-Attention Mechanism**: To effectively fuse local and global visual features.
 *   **Morphological Features**: Geometric properties of the nuclei.
 *   **Ring Features**: Texture information from the nuclear boundary.
 *   **Graph Features**: Spatial relationships captured by Graph Attention Networks (GAT).
-*   **Co-Attention Mechanism**: To effectively fuse local and global visual features.
 
-  <img width="400" height="600" alt="model" src="https://github.com/user-attachments/assets/8326ca63-2864-434c-ad59-d4eb6d2bf746" />
+  <img width="600" height="800" alt="model" src="https://github.com/user-attachments/assets/8326ca63-2864-434c-ad59-d4eb6d2bf746" />
 
 (a) Preprocessing Module. Raw histopathology images are first processed by a nuclear segmentation network to delineate nuclear boundaries and extract individual nucleus instances, yielding high-quality nuclear masks and cropped patches that serve as the input for downstream analysis. (b) Classification Module. For each segmented nucleus, CellMaskNet constructs a multi-source representation by combining four complementary groups of features: Context-aware Appearance Features (CAF) obtained via cross-scale co-attention between tile-level and nucleus-level representations, Morphological Structure Features (MSF) derived from contour-based morphometric descriptors, Chromatin Distribution Features (CDF) capturing intra-nuclear and perinuclear chromatin distribution through multi-scale annular sampling, and Microenvironment Graph Features (MGF) modeling local tissue topology using a GAT. These features are concatenated and fed into a multilayer perceptron classifier, which is trained with a cross-entropy loss to achieve accurate and robust nuclear cell type classification.
 
@@ -19,7 +19,7 @@
 The project is structured into sequential steps:
 
 1.  **Step 0: Data Preprocessing** (`step0_data_preprocessor.py`)
-    *   Prepares the PanNuke dataset for processing.
+    *   Prepares the dataset for processing.
 2.  **Step 1: Segmentation** (`step1_hovernet_batch.py`)
     *   Runs HoverNet to generate instance segmentation masks for all images.
 3.  **Step 2: Nuclei Extraction** (`step2_extract_nuclei.py`)
@@ -53,10 +53,21 @@ The project is structured into sequential steps:
     ```bash
     pip install -r requirements.txt
     ```
+    
+## Model weight 
+
+- [MobileViT](https://huggingface.co/apple/mobilevit-x-small)  
+- [Swin-T](https://github.com/microsoft/Swin-Transformer)
+  
+## Dataset 
+
+- [PanNuke](https://warwick.ac.uk/fac/cross_fac/tia/data/pannuke/)
+- [CoNSeP](https://github.com/vqdang/hover_net?tab=readme-ov-file)
+- [CRCHisto](https://warwick.ac.uk/fac/sci/dcs/research/tia/data/)
 
 ## Usage
 
-Run the scripts in numerical order. Ensure you have configured the paths in each script to point to your PanNuke dataset location.
+Run the scripts in numerical order. Ensure you have configured the paths in each script to point to your dataset location.
 
 ```bash
 # 1. Preprocess Data
