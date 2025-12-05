@@ -2,7 +2,7 @@
  A Nucleus Representation Aware Deep  Learning Model for Cell Segmentation and Classification  in Histopathological Images
 ## Introduction
 
-**CellMaskNet** is a comprehensive deep learning pipeline designed for precise nucleus classification on the PanNuke dataset. It leverages a multi-feature fusion strategy, combining:
+**CellMaskNet** is a comprehensive deep learning pipeline designed for precise segmentation and classification of nuclei in pathology images. It leverages a multi-feature fusion strategy, combining:
 *   **Local Features**: Extracted via MobileViT.
 *   **Global Features**: Extracted via Swin Transformer.
 *   **Morphological Features**: Geometric properties of the nuclei.
