@@ -9,7 +9,8 @@
 *   **Ring Features**: Texture information from the nuclear boundary.
 *   **Graph Features**: Spatial relationships captured by Graph Attention Networks (GAT).
 *   **Co-Attention Mechanism**: To effectively fuse local and global visual features.
-![Uploading model1.png…]()
+<img width="2228" height="2587" alt="model" src="https://github.com/user-attachments/assets/8326ca63-2864-434c-ad59-d4eb6d2bf746" />
+
 
 This repository contains the complete workflow from data preprocessing and segmentation (using HoverNet) to feature extraction and final classification.
 
